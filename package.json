@@ -63,10 +63,10 @@
   "dependencies": {
     "@amcharts/amcharts4": "^4.9.28",
     "@amcharts/amcharts4-geodata": "^4.1.16",
-    "@popperjs/core": "^2.11.2",
+    "@popperjs/core": "2.11.2",
     "@types/googlemaps": "^3.43.3",
     "@types/markerclustererplus": "^2.1.33",
-    "@types/react": "^17.0.39",
+    "@types/react": "16.0.0",
     "animate.css": "4.1.0",
     "apexcharts": "^3.19.3",
     "awesome-bootstrap-checkbox": "1.0.1",
@@ -105,7 +105,7 @@
     "tabler-icons": "^1.10.0"
   },
   "devDependencies": {
-    "@babel/core": "7.10.4",
+    "@babel/core": "7.11.0",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "7.10.4",
     "@babel/plugin-proposal-optional-chaining": "^7.10.4",
@@ -113,7 +113,6 @@
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "10.0.1",
     "babel-jest": "24.8.0",
     "babel-loader": "8.0.5",
     "babel-plugin-named-asset-import": "1.0.0-next.103",
@@ -126,7 +125,7 @@
     "css-loader": "2.1.1",
     "dotenv": "8.0.0",
     "dotenv-expand": "5.1.0",
-    "eslint": "^5.16.0",
+    "eslint": "8.0.0",
     "eslint-config-react-app": "4.0.1",
     "eslint-loader": "2.1.1",
     "eslint-plugin-flowtype": "^3.8.1",
