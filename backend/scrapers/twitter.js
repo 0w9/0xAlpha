@@ -18,3 +18,5 @@ function fetchTweets() {
     
     console.timeEnd("Fetch tweets");
 }
+
+module.exports = fetchTweets;
