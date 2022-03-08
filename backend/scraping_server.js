@@ -21,7 +21,8 @@ let port = 1234;
 // Scraping algorithm 
 
 function intervalScraping() {
-    setInterval(twitter, 3600000); // Fetches tweets every 60 minutes / 3.600.000 ms
+	//setInterval(twitter, 3600000); // Fetches tweets every 60 minutes / 3.600.000 ms
+	twitter();
 }
 
 function start() {
