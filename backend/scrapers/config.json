@@ -1,7 +1,7 @@
 {
-    "api_key":"TPRRRZHtfJG4hGxZ2wQ0K3yJk",
-    "api_key_secret":"MZCKDLpKGjeoJRxXx8F7Lar7QZYi7F111ZHs2TrA6Gb5Q9XkGD",
-    "bearer_token":"Bearer AAAAAAAAAAAAAAAAAAAAACHxZgEAAAAA2hWoEs8Z1qTFVVmhOAJ%2FQ%2BUlzJo%3DQiqrWIt7KT3xlDcWXWBGcuwgzhzTextCFjwpO99bssWWcD8YXt",
+    "api_key":"ENV",
+    "api_key_secret":"ENV",
+    "bearer_token":"Bearer %ENV",
     "user_id":1381699264011771906,
-    "mongoDB_uri": "mongodb+srv://root:root@data.h8ztr.mongodb.net/FEED?retryWrites=true&w=majority"
+    "mongoDB_uri": "mongodb+srv://user:pass@data.h8ztr.mongodb.net/FEED?retryWrites=true&w=majority"
 }
