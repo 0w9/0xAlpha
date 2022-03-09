@@ -55,13 +55,8 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className={s.root}>
-        <h1 className="page-title">
-          Dashboard &nbsp;
-          <small>
-            <small>The Lucky One</small>
-          </small>
-        </h1>
+      <div>
+        <h1 className="page-title"> Announcements </h1>
 
         <Row>
           <Col lg={7}>
