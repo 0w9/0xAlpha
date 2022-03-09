@@ -1,0 +1,9 @@
+.sidebarIcons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.icon {
+    margin-left: 50px;
+}
