@@ -10,9 +10,7 @@ let contract_addresses = {
     "cool-cats": "0x4265de963cdd60629d03fee2cd3285e6d5ff6015",
     "3landers": "0x8cbc5c6f260bef0f9edb71219a61a1c52062a586",
     "the-doggies": "0xe19ae8f9b36ca43d12741288d0e311396140df6f",
-    "doogies": "0x73a77f5108db8c21041701561e436f0354f632f2",
-
-    "test_nft": "0x21011333fa45f3564176e9a16a043bb84f863e5d"
+    "doogies": "0x73a77f5108db8c21041701561e436f0354f632f2"
 }
 
 const logger = pino({
@@ -24,7 +22,6 @@ const logger = pino({
     },
 });
 
-
 async function fetchUserNfts(address) {
 
     const res = await axios.get(`https://api.nftport.xyz/v0/accounts/${address}?chain=ethereum`, {
@@ -34,16 +31,15 @@ async function fetchUserNfts(address) {
         }
     }).then(res => res.data);
     res.nfts.forEach(nft => {
-        //if(Object.values(contract_addresses).map(x => x.toLowerCase()).includes(nft.contract_address.toLowerCase())) {
 
+        console.log(nft.contract_address);
         for (const [name, contract] of Object.entries(contract_addresses)) {
-            if (contract === nft.contract_address) {
-                console.log(`${address} owns a ${name}!`)
+            if (contract.toLowerCase() === nft.contract_address.toLowerCase()) {
+                console.log(`${address} owns a ${name}!`);
             }
-
         }
     });
 
 }
 
-fetchUserNfts("0x8ffa85a0c59cf23967eb31c060b2ca3a920276e1");
+fetchUserNfts("0xc0dc04aac2d5f1d35769e54b95c22194500a69f7");
