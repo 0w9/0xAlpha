@@ -23,7 +23,7 @@ const logger = pino({
 });
 
 async function fetchUserNfts(address) {
-
+    let collections = []
     const res = await axios.get(`https://api.nftport.xyz/v0/accounts/${address}?chain=ethereum`, {
         headers: {
             'Authorization': '1970291d-6325-4d02-956e-bf97900bedd7',
@@ -35,11 +35,13 @@ async function fetchUserNfts(address) {
         console.log(nft.contract_address);
         for (const [name, contract] of Object.entries(contract_addresses)) {
             if (contract.toLowerCase() === nft.contract_address.toLowerCase()) {
-                console.log(`${address} owns a ${name}!`);
+                collections.push(contract.toLowerCase());
             }
         }
     });
 
+    return collections;
+
 }
 
-fetchUserNfts("0xc0dc04aac2d5f1d35769e54b95c22194500a69f7");
+module.exports = fetchUserNfts;
