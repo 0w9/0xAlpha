@@ -1,0 +1,12 @@
+.card {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.date {
+    text-align: end;
+}
+
+.title {
+    text-align: center;
+}

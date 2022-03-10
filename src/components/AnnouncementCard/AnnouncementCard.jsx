@@ -6,19 +6,19 @@ import {
     CardSubtitle, 
     CardText  
 } from 'reactstrap'
-
+import './AnnouncementCard.css'
 
 function AnnouncementCard(props) {
     let date = new Date()
 
   return (
-    <div>
-      <Card>
+    <div >
+      <Card className='card'>
         <CardBody>
-          <CardTitle tag="h5"> {props.name} </CardTitle>
+          <CardTitle className="title" tag="h5"> {props.name} </CardTitle>
           <CardText>{props.announcement}</CardText>
-          <CardSubtitle className="mb-2 text-muted" tag="h6">
-            { date.getMonth() + "-" +  date.getDate() + "-" + date.getFullYear()}
+          <CardSubtitle className="date mb-2 text-muted" tag="h6">
+            { date.getMonth() + "-" +  date.getDate() + "-" + date.getFullYear() + " " + "at" + " " + date.toLocaleTimeString()}
           </CardSubtitle>
         </CardBody>
       </Card>
