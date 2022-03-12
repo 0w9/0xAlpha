@@ -1,4 +1,5 @@
 const pino = require("pino");
+const addressHelper = require("../address_");
 
 const logger = pino({
     transport: {
@@ -9,14 +10,13 @@ const logger = pino({
     },
 });
 
-module.exports.getUserFeedback = function(req, res) {
-    
+module.exports.getUserFeed = async function(req, res) {
     try {    
         if(req.headers["address"]) {
             let address = req.headers["address"];
 
-            // Check for users NFTs by address,
-            // defined in the header.
+            const nfts = await addressHelper.fetchUserNfts(address);
+            res.json({debug_result: nfts.toString()});
 
         } else {
             res.json({error: "Please define a ethereum address."});
@@ -24,8 +24,8 @@ module.exports.getUserFeedback = function(req, res) {
             // Error, if no address is specified
         } 
     } catch(e) {
-        logger.alert("Fatal error: " + e.message);
-
+        logger.info("Fatal error: " + e.message);
+        res.json({error: e.message});
         // Prevent any error from crashing the backend. 
     }
 }
