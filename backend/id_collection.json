@@ -16,7 +16,8 @@
     },
 
     {   "name": "doodles",
-        "twitter":"1405701429646430212"
+        "twitter":"1405701429646430212",
+        "contract_address":""
     },
     {
         "name":"azuki",
@@ -41,6 +42,6 @@
 
     {   "name":"the-doggies",
         "twitter":"1486424622115565568",
-        "the-doggies": "0xe19ae8f9b36ca43d12741288d0e311396140df6f"
+        "contract_address": "0xe19ae8f9b36ca43d12741288d0e311396140df6f"
     }
 ]

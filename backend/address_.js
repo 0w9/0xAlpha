@@ -21,13 +21,11 @@ module.exports.fetchUserNfts = async(address) => {
     }).then(res => res.data);
 
     res.nfts.forEach(nft => {
-        //console.log(nft);
-
-        Object.entries(collection_info).map(x => {
-            console.log(x[0].twitter);
-            /*if(x.contract_address == nft.contract_address) {
+        Object.values(collection_info).map(x => {
+            if(x.contract_address.toLowerCase() === nft.contract_address.toLowerCase()) {
+                
                 collections.push(x.contract_address.toLowerCase());
-            }*/
+            }
         })
 
         /*for (const [name, contract] of Object.entries(collection_info)) {
