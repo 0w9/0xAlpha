@@ -3,8 +3,8 @@ const express = require("express");
 const fs = require("fs");
 const mongoose = require('mongoose');
 const pino = require("pino");
-const TwitterModel = require("./TwitterModel");
-let twitterConfig = JSON.parse(fs.readFileSync('/Users/lennard/nft-portfolio-management-1/backend/scrapers/config.json'));
+// const TwitterModel = require("./TwitterModel");
+let twitterConfig = require('./config.json');
 const {
 	performance
 } = require('perf_hooks');
@@ -44,20 +44,20 @@ async function fetchTweets() {
 			}));
 
 			for await (const tweet of tweetsMap) {
-				const countQuery = TwitterModel.where({
-					text: tweet.text
-				}).count();
+				// const countQuery = TwitterModel.where({
+				// 	text: tweet.text
+				// }).count();
 
-				if (countQuery !== 0) {
-					const tweetModel = TwitterModel({
-						id: tweet.id,
-						created_at: tweet.created_at,
-						text: tweet.text,
-						author_id: tweet.author_id
-					});
-					const res = await tweetModel.save();
-					logger.info(`Created a Tweet object with the ID: ${res._id} | Saved to "tweets" collection.`);
-				}
+				// if (countQuery !== 0) {
+				// 	const tweetModel = TwitterModel({
+				// 		id: tweet.id,
+				// 		created_at: tweet.created_at,
+				// 		text: tweet.text,
+				// 		author_id: tweet.author_id
+				// 	});
+				// 	const res = await tweetModel.save();
+				// 	logger.info(`Created a Tweet object with the ID: ${res._id} | Saved to "tweets" collection.`);
+				// }
 			}
 
 			var endTime = performance.now()
