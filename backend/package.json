@@ -3,7 +3,7 @@
   "version": "1.2.9",
   "private": true,
   "engines": {
-    "node": "14.x"
+    "node": "14.0.0"
   },
   "scripts": {
     "start": "node scraping_server.js"
