@@ -6,7 +6,6 @@
     "node": "14.x"
   },
   "scripts": {
-    "build": "cross-env PUBLIC_URL='./' node scripts/build.js",
     "start": "node scraping_server.js"
   },
   "browserslist": [
