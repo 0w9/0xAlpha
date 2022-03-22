@@ -1,6 +1,6 @@
 const axios = require("axios");
 const pino = require("pino");
-const collection_info = require("./id_collection.json");
+const collection_info = require("./models/id_collection.json");
 
 const logger = pino({
     transport: {

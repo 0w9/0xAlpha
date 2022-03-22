@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 import { Tweets } from '../models/Tweet'
 
 export const createTweet = (
