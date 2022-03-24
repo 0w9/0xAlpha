@@ -4,7 +4,7 @@ const fs = require("fs");
 const mongoose = require('mongoose');
 const pino = require("pino");
 // const TwitterModel = require("./TwitterModel");
-let twitterConfig = require('./config.json');
+let twitterConfig = require('../configs/config.json');
 const {
 	performance
 } = require('perf_hooks');

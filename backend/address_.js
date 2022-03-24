@@ -1,6 +1,6 @@
 const axios = require("axios");
 const pino = require("pino");
-const collection_info = require("./models/id_collection.json");
+const collection_info = require("./configs/id_collection.json");
 
 const logger = pino({
     transport: {
@@ -11,7 +11,7 @@ const logger = pino({
     },
 });
 
-module.exports.fetchUserNfts = async(address) => {
+module.exports.fetchUserNfts = async (address) => {
     let collections = []
     const res = await axios.get(`https://api.nftport.xyz/v0/accounts/${address}?chain=ethereum`, {
         headers: {
@@ -22,19 +22,19 @@ module.exports.fetchUserNfts = async(address) => {
 
     res.nfts.forEach(nft => {
         Object.values(collection_info).map(x => {
-            if(x.contract_address.toLowerCase() === nft.contract_address.toLowerCase()) {
-                
+            if (x.contract_address.toLowerCase() === nft.contract_address.toLowerCase()) {
+
                 collections.push(x.contract_address.toLowerCase());
             }
         })
 
-        /*for (const [name, contract] of Object.entries(collection_info)) {
+        for (const [name, contract] of Object.entries(collection_info)) {
             console.log(name, contract);
             if (contract.contract_address === nft.contract_address.toLowerCase()) {
                 collections.push(contract.toLowerCase());
-            }*/
-    //}
-    });
+            }
+        }
+        });
 
     return collections;
 }

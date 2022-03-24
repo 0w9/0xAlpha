@@ -28,7 +28,7 @@ app.get("/feed", feedHelper.getUserFeed);
 
 function intervalScraping() {
 	setInterval(twitter, 3600000); // Fetches tweets every 60 minutes / 3.600.000 ms
-    //twitter();
+    twitter();
 }
 
 function start() {
