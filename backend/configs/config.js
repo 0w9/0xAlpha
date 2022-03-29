@@ -1,4 +1,4 @@
-{
+export const twitterConfig = {
     "api_key":"ENV",
     "api_key_secret":"ENV",
     "bearer_token":"Bearer ENV",

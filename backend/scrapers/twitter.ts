@@ -1,13 +1,12 @@
-const axios = require("axios")
-const express = require("express");
-const fs = require("fs");
-const mongoose = require('mongoose');
-const pino = require("pino");
-// const TwitterModel = require("./TwitterModel");
-let twitterConfig = require('../configs/config.json');
-const {
-	performance
-} = require('perf_hooks');
+import axios from "axios";
+import fs from "fs";
+import mongoose from 'mongoose';
+import pino from "pino";
+import { twitterConfig } from '../configs/config'
+import { performance } from 'perf_hooks';
+import { Tweet } from "../models/Tweet";
+import { queryTweets } from '../handlers/queryTweet';
+import { collections } from '../configs/id_collection';
 
 const logger = pino({
 	transport: {
@@ -23,10 +22,14 @@ async function fetchTweets() {
 	mongoose.connect(twitterConfig.mongoDB_uri);
 
 	try {
-		const ids = fs.readFileSync('/Users/lennard/nft-portfolio-management-1/backend/scrapers/id_collection.json');
-		const id_json = JSON.parse(ids);
+		// const ids = fs.readFileSync('/Users/lennard/nft-portfolio-management-1/backend/scrapers/id_collection.json');
+		// const id_json = JSON.parse(ids);
 
-		const twitter_id_arr = Object.keys(id_json).map(key => id_json[key][0].twitter);
+		let twitter_id_arr = [];
+		collections.map( (collection, index) => {
+			twitter_id_arr[index] = collection.twitter;
+		})
+
 
 		for (let i = 0; i < twitter_id_arr.length; i++) {
 			let uri = `https://api.twitter.com/2/users/${twitter_id_arr[i]}/tweets?exclude=replies,retweets&tweet.fields=id,created_at,text,author_id`
@@ -44,20 +47,19 @@ async function fetchTweets() {
 			}));
 
 			for await (const tweet of tweetsMap) {
-				// const countQuery = TwitterModel.where({
-				// 	text: tweet.text
-				// }).count();
 
-				// if (countQuery !== 0) {
-				// 	const tweetModel = TwitterModel({
-				// 		id: tweet.id,
-				// 		created_at: tweet.created_at,
-				// 		text: tweet.text,
-				// 		author_id: tweet.author_id
-				// 	});
-				// 	const res = await tweetModel.save();
-				// 	logger.info(`Created a Tweet object with the ID: ${res._id} | Saved to "tweets" collection.`);
-				// }
+				const countQuery = await queryTweets(tweet.id);
+				
+				if (countQuery !== 0) {
+					const tweetModel = new Tweet({
+						id: tweet.id,
+						created_at: tweet.created_at,
+						text: tweet.text,
+						author_id: tweet.author_id
+					});
+					const res = await tweetModel.save();
+					logger.info(`Created a Tweet object with the ID: ${res._id} | Saved to "tweets" collection.`);
+				}
 			}
 
 			var endTime = performance.now()

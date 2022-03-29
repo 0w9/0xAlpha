@@ -1,4 +1,4 @@
-[
+export const collections = [
     {
         "name":"doogies",
         "twitter":"1484596586021797889",

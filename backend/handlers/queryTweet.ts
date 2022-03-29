@@ -1,5 +1,5 @@
-import { Tweets } from '../models/Tweet'
+import { Tweet } from '../models/Tweet'
 
 export const queryTweets = async (id) => {
-  return await Tweets.findById(id).exec()
+  return await Tweet.findById(id).exec()
 }
